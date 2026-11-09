@@ -1,6 +1,6 @@
 # Git, colaboración, auditoría BDD/TDD y vídeo
 
-**Instrucciones detalladas:** [guía de auditoría, UML evolutivo y vídeo](10-guia-auditoria-uml-video.md). **Plantilla rellenable:** [PLANTILLA_README_P4.md](PLANTILLA_README_P4.md). La guía desarrolla los comandos de Git, la selección de hashes, los diagramas de tres cortes y la evaluación de métricas. Esta página recoge las obligaciones esenciales.
+**Instrucciones detalladas:** [guía de auditoría, UML evolutivo y vídeo](08-guia-auditoria-uml-video.md). **Plantilla rellenable:** [PLANTILLA_README_P4.md](PLANTILLA_README_P4.md). La guía desarrolla los comandos de Git, la selección de hashes, los diagramas de tres cortes y la evaluación de métricas. Esta página recoge las obligaciones esenciales.
 
 ## Estructura y ramas
 
@@ -18,7 +18,7 @@ Un repositorio GitHub por grupo; conservar P1/P2/P3. Partir del proyecto Maven `
 | Implementación | `TDD-FEAT HU-02 BDD-05b: validar suma de ejercicios` |
 | Refactorización | `TDD-REFACTOR HU-02 BDD-05a+BDD-05b: trasladar validación al dominio` |
 
-**Momento del commit:** tras escribir y ejecutar el cambio correspondiente y antes de pasar a la siguiente fase. `TDD-TEST` conserva un RED auténtico si existe, distinguiendo compilación por API aún ausente, aserción fallida y error de infraestructura; `TDD-FEAT` exige GREEN; `TDD-REFACTOR` exige GREEN antes y después. `ATDD-TEST` puede documentar `undefined/pending`, que **no** es RED de JUnit. `ATDD-FEAT` exige pasos y aserciones reales, aceptación GREEN y regresión. No fusionar una rama deliberadamente roja. **No reescribir/squash** los commits seleccionados como evidencia; vincular hash, pruebas y ejecuciones CI en `README_P4.md`. La explicación paso a paso y los comandos Git/Eclipse figuran en [el laboratorio HU-01](03-laboratorio-hu01.md) y [la guía de auditoría](10-guia-auditoria-uml-video.md).
+**Momento del commit:** tras escribir y ejecutar el cambio correspondiente y antes de pasar a la siguiente fase. `TDD-TEST` conserva un RED auténtico si existe, distinguiendo compilación por API aún ausente, aserción fallida y error de infraestructura; `TDD-FEAT` exige GREEN; `TDD-REFACTOR` exige GREEN antes y después. `ATDD-TEST` puede documentar `undefined/pending`, que **no** es RED de JUnit. `ATDD-FEAT` exige pasos y aserciones reales, aceptación GREEN y regresión. No fusionar una rama deliberadamente roja. **No reescribir/squash** los commits seleccionados como evidencia; vincular hash, pruebas y ejecuciones CI en `README_P4.md`. La explicación paso a paso y los comandos Git/Eclipse figuran en [el laboratorio HU-01](04-laboratorio-hu01.md) y [la guía de auditoría](08-guia-auditoria-uml-video.md).
 Incluir una matriz individual y conjunta, por ejemplo:
 
 | Alumno | BDD / HU | Cucumber inicial (hash) | JUnit RED (hash) | GREEN (hash) | REFACTOR/pruebas OO (hash) | Cucumber GREEN + regresión (hash/Actions) | PR/revisión | Minuto de vídeo |
@@ -45,4 +45,4 @@ Grabación de interacción en IDE, navegador, GitHub y herramientas con voz simu
 - Interpretación crítica de JaCoCo/SonarQube CalSo, hallazgos, decisiones, mejoras y reevaluaciones.
 - Vídeo **por participante** con escenario, URL estable y marcas de minuto; incidencias y límites de la solución.
 
-La evidencia de autoría es la correspondencia verificable entre el repositorio y la explicación, **no** el número bruto de commits. La rúbrica detallada y sus niveles se encuentran en `09-rubrica-analitica.md`.
+La evidencia de autoría es la correspondencia verificable entre el repositorio y la explicación, **no** el número bruto de commits. La rúbrica detallada y sus niveles se encuentran en `07-rubrica-analitica.md`.
