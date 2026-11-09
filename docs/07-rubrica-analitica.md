@@ -97,6 +97,6 @@ Cada celda describe el logro observable y su puntuación exacta. Solo se asigna 
 | F2 | 8 | | | |
 | **Total** | **100** | | | |
 
-**Documentación de apoyo:** [guía para reconstruir commits, elaborar UML y grabar vídeo](10-guia-auditoria-uml-video.md) y [plantilla de entrega](../plantillas/README_P4.md).
+**Documentación de apoyo:** [guía para reconstruir commits, elaborar UML y grabar vídeo](08-guia-auditoria-uml-video.md) y [plantilla de entrega](PLANTILLA_README_P4.md).
 
 **Rango esperado de la máxima puntuación:** excelente dominio de los escenarios de Cucumber, TDD test-first auténtico, traslado progresivo de reglas al dominio, pruebas OO y de contrato, dobles ajustados al objetivo, métricas analizadas y una explicación en vídeo auditada mediante GitHub. No se necesita aumentar el tamaño de la aplicación ni acumular clases innecesarias.
