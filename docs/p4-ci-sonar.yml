@@ -1,10 +1,10 @@
 # PLANTILLA: copiar a .github/workflows/p4-ci-sonar.yml del repositorio del grupo
 # Antes de activar, reemplazar TODOS los campos <<...>>. No debe ejecutarse desde esta carpeta docente.
-name: P4 · Maven JUnit Cucumber JaCoCo SonarQube
+name: ProyectoP4 · Maven JUnit Cucumber JaCoCo SonarQube
 
 on:
   push:
-    branches: [main, 'p4/**']
+    branches: [main]
     paths:
       - 'P4/**'
       - '.github/workflows/p4-ci-sonar.yml'
