@@ -32,7 +32,7 @@ Se acepta una propuesta cuando su duración es mayor que cero y no supera el tie
 
 Los escenarios para las pruebas de aceptación de ATDD que han sido aprobados con el *Product Owner* se encuentran detallados en el archivo donde se recogen los detalles de las historias de usuario y los contratos de aceptación.
 
-En esta primera historia se trabajará de forma guiada, siguiendo [el laboratorio adaptado al proyecto Maven y a las sesiones programadas](03-laboratorio-hu01.md). La sesión se selecciona por identificador **dentro de un `Dojo` consultado por su ID**. El laboratorio permite aprender a abrir un escenario Cucumber, avanzar con pruebas JUnit pequeñas y revisar las responsabilidades del código una vez obtenido el resultado esperado.
+En esta primera historia se trabajará de forma guiada, siguiendo [el laboratorio adaptado al proyecto Maven y a las sesiones programadas](04-laboratorio-hu01.md). La sesión se selecciona por identificador **dentro de un `Dojo` consultado por su ID**. El laboratorio permite aprender a abrir un escenario Cucumber, avanzar con pruebas JUnit pequeñas y revisar las responsabilidades del código una vez obtenido el resultado esperado.
 
 ### HU-02. Incorporar ejercicios técnicos y físicos a una propuesta
 
@@ -121,7 +121,7 @@ Los commits deberán seguir la **convención obligatoria en español** `TIPO HU-
 
 Ejemplos: `ATDD-TEST HU-02 BDD-05b: especificar rechazo por suma incorrecta`; `TDD-TEST HU-02 BDD-05b: exigir suma coherente`; `TDD-FEAT HU-02 BDD-05b: validar suma de duraciones`; `TDD-REFACTOR HU-02 BDD-05a+BDD-05b: trasladar regla al dominio`; `ATDD-FEAT HU-02 BDD-05b: verificar el rechazo mediante Cucumber`. Todos son orientativos, no commits que debáis simular.
 
-El `README_P4.md` explicará **cómo y cuándo** se hicieron los commits, cómo se ejecutó cada hito y cómo reconstruir un ciclo real con hashes y PR. Debéis crear un commit `TDD-TEST` después de observar el RED genuino, antes del código de producción; otro `TDD-FEAT` tras comprobar GREEN; y `TDD-REFACTOR` si hubo refactorización real, con regresión GREEN. Un `undefined/pending` de Cucumber es un estado ATDD inicial, no un RED unitario. No hay número fijo de commits ni hay que fabricar errores. Consultad [el laboratorio HU-01](03-laboratorio-hu01.md) y [la guía de auditoría](10-guia-auditoria-uml-video.md).
+El `README_P4.md` explicará **cómo y cuándo** se hicieron los commits, cómo se ejecutó cada hito y cómo reconstruir un ciclo real con hashes y PR. Debéis crear un commit `TDD-TEST` después de observar el RED genuino, antes del código de producción; otro `TDD-FEAT` tras comprobar GREEN; y `TDD-REFACTOR` si hubo refactorización real, con regresión GREEN. Un `undefined/pending` de Cucumber es un estado ATDD inicial, no un RED unitario. No hay número fijo de commits ni hay que fabricar errores. Consultad [el laboratorio HU-01](04-laboratorio-hu01.md) y [la guía de auditoría](08-guia-auditoria-uml-video.md).
 
 Conservad los estados reales de trabajo necesarios para la auditoría. Evitad combinar o reescribir los commits que vais a usar como evidencia. No hagáis un merge de una rama que todavía tiene pruebas deliberadamente rojas. Los PR finales deben quedar verificados.
 
@@ -149,6 +149,6 @@ No basta con escribir que se ha obtenido un porcentaje elevado de cobertura o qu
 
 ## Entrega
 
-Todo el código, las pruebas y la documentación irán en `P4/` de vuestro repositorio. El workflow de GitHub Actions se ubicará en `.github/workflows/` de la raíz del repositorio. Completad la plantilla `README_P4.md` que se os facilita: incluye planificación, reglas, pruebas, política de commits, diagramas UML, vídeos y análisis final. No añadáis documentos extensos para repetir información ya enlazada.
+Todo el código, las pruebas y la documentación irán en `ProyectoP4/` de vuestro repositorio. El workflow de GitHub Actions se ubicará en `.github/workflows/` de la raíz del repositorio. Completad la plantilla `README_P4.md` que se os facilita: incluye planificación, reglas, pruebas, política de commits, diagramas UML, vídeos y análisis final. No añadáis documentos extensos para repetir información ya enlazada.
 
 La evaluación seguirá la **rúbrica analítica de 100 puntos** publicada con la práctica. Se tendrá en cuenta que la aplicación funcione, pero también la calidad de los escenarios, el uso real de TDD, las pruebas de clases, colaboración, herencia y polimorfismo pertinentes, el traslado de reglas al dominio, la selección justificada de stubs, mocks y fakes, la interpretación de las métricas y la posibilidad de auditar el desarrollo con Git.
