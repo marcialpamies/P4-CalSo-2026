@@ -2,7 +2,7 @@
 
 ## Descripción
 
-El Ayuntamiento para el que se desarrollo la funcionalidad de reserva de dojos de la práctica P3 utiliza *Dojo Reservation* para organizar actividades de artes marciales. En esa práctica se trabajó con los conceptos: dojos, armas, equipos y reservas. Ahora se necesita una función nueva: ayudar a los entrenadores a preparar sesiones de entrenamiento.
+El Ayuntamiento para el que se desarrollo la funcionalidad de reserva de dojos de la práctica P3 utiliza *Dojo Reservation* para organizar actividades de artes marciales. En esa práctica se trabajó con los conceptos: dojos, armas, equipos y reservas. Ahora se necesita una funcionalidad nueva: ayudar a los entrenadores a preparar sesiones de entrenamiento.
 
 Los dojos contienen sesiones de entrenamiento programadas. Cada sesión tiene un identificador, pertenece a un dojo concreto e indica la duración máxima y el nivel del grupo al que va dirigido. El sensei selecciona una de esas sesiones para registrar una propuesta de entrenamiento, comprobar que puede realizarse y consultarla después. También podrá pedir propuestas de entrenamiento a un asistente de inteligencia artificial. El sistema no debe aceptar una propuesta solo porque el asistente la haya generado, es el propio sensei el que termina aceptando o rechazando la propuesta.
 
@@ -12,9 +12,17 @@ Esta práctica se centra en **cómo se desarrolla y se verifica** el código. Es
 
 ## Estado inicial
 
-El proyecto Maven de partida está incluido en `ProyectoP4/pom.xml`: Java 17, JUnit 5, Cucumber, Mockito, JaCoCo y Jackson. Conserva `Dojo`, `Weapon`, `Money`, `Discount`, sus pruebas y el puerto heredado `DojoRepository` de P3. La raíz del agregado `Dojo` incorpora **sesiones ya programadas** representadas por `TrainingSession` y `TrainingLevel`; se proporcionan sus pruebas. Una implementación mínima `InMemoryDojoRepository` proporciona DOJO-01 (BO, KATANA y sesión SES-001, máximo 60 minutos, BEGINNER) y DOJO-02 (BO). **No se entregan casos de uso, propuestas, ejercicios ni un repositorio de propuestas**. Los detalles y comandos de inicio figuran en [BASE_INICIAL.md](docs/BASE_INICIAL.md).
+El proyecto Maven de partida está incluido en `ProyectoP4/pom.xml`: Java 17, JUnit 5, Cucumber, Mockito, JaCoCo y Jackson (biblioteca de Java que permite trabajar con datos en formato JSON, principalmente convirtiendo textos JSON en objetos Java y viceversa). 
 
-**Las sesiones se dan por programadas:** P4 no crea sesiones, asigna fechas ni modifica horarios. Los datos de la sesión seleccionada se facilitan en los escenarios o mediante datos de prueba controlados; no es necesario implementar la gestión de reservas. Las nuevas clases, interfaces y relaciones deben aparecer mientras escribís pruebas y evolucionáis el código.
+El proyecto conserva las clases `Dojo`, `Weapon`, `Money`, `Discount`, sus pruebas y el puerto heredado `DojoRepository` de P3. La raíz del agregado `Dojo` incorpora **sesiones ya programadas** representadas por `TrainingSession` y `TrainingLevel`. Además, se proporcionan sus pruebas unitarias. 
+
+El proyecto también incorpora una implementación mínima `InMemoryDojoRepository` que proporciona las instancias de dojos: DOJO-01 (BO, KATANA y sesión SES-001, máximo 60 minutos, BEGINNER) y DOJO-02 (BO). 
+
+El proyecto **no recoge casos de uso, propuestas, ejercicios ni un repositorio de propuestas**. Los detalles y comandos de inicio figuran en [BASE_INICIAL.md](docs/BASE_INICIAL.md).
+
+La funcionalidad de la práctica P4 no alcanza la creación de sesiones por lo que **se dan por programadas:**, tampoco asigna fechas ni modifica horarios. Los datos de la sesión seleccionada se facilitan en los escenarios o mediante datos de prueba controlados; no es necesario implementar la gestión de reservas. 
+
+Las nuevas clases, interfaces y relaciones deben aparecer mientras se escriben las pruebas unitarias y se evoluciona el código en los ciclos TDD y ATDD.
 
 Podéis consultar la especificación y el código de la práctica 3 para entender los conceptos que se reutilizan. No debéis trasladar su aplicación completa a P4.
 
@@ -28,9 +36,9 @@ Se desarrollarán varias historias de usuario asociadas al proyecto descrito:
 
 El sensei **selecciona una sesión de entrenamiento ya programada** y registra para ella una propuesta con identificador y duración. La sesión tiene un identificador, un dojo concreto, un nivel de grupo y una duración máxima positiva en minutos. La propuesta debe quedar **asociada a la pareja de identificadores `dojoId` y `sessionId` de la sesión seleccionada**, no solo a su duración. El dojo se consulta a través de `DojoRepository` y la sesión dentro del agregado; no puede elegirse un dojo ajeno a la sesión.
 
-Se acepta una propuesta cuando su duración es mayor que cero y no supera el tiempo disponible. Una propuesta aceptada se guarda y puede recuperarse por su identificador con su duración y la referencia completa (`dojoId` y `sessionId`) a la sesión para la que fue registrada. Una propuesta rechazada no queda registrada y se debe informar del motivo de rechazo.
+Se acepta una propuesta para una sesión cuando su duración es mayor que cero y no supera el tiempo disponible en dicha sesión. Una propuesta aceptada se guarda y puede recuperarse por su identificador con su duración y la referencia completa (`dojoId` y `sessionId`) a la sesión para la que fue registrada. Una propuesta rechazada no queda registrada y se debe informar del motivo de rechazo.
 
-Los escenarios para las pruebas de aceptación de ATDD que han sido aprobados con el *Product Owner* se encuentran detallados en el archivo donde se recogen los detalles de las historias de usuario y los contratos de aceptación.
+Los escenarios para las pruebas de aceptación de ATDD que han sido aprobados con el *Product Owner* se encuentran detallados en el archivo [02-aceptación.md](02-aceptacion.md).
 
 En esta primera historia se trabajará de forma guiada, siguiendo [el laboratorio adaptado al proyecto Maven y a las sesiones programadas](04-laboratorio-hu01.md). La sesión se selecciona por identificador **dentro de un `Dojo` consultado por su ID**. El laboratorio permite aprender a abrir un escenario Cucumber, avanzar con pruebas JUnit pequeñas y revisar las responsabilidades del código una vez obtenido el resultado esperado.
 
@@ -121,7 +129,7 @@ Los commits deberán seguir la **convención obligatoria en español** `TIPO HU-
 
 Ejemplos: `ATDD-TEST HU-02 BDD-05b: especificar rechazo por suma incorrecta`; `TDD-TEST HU-02 BDD-05b: exigir suma coherente`; `TDD-FEAT HU-02 BDD-05b: validar suma de duraciones`; `TDD-REFACTOR HU-02 BDD-05a+BDD-05b: trasladar regla al dominio`; `ATDD-FEAT HU-02 BDD-05b: verificar el rechazo mediante Cucumber`. Todos son orientativos, no commits que debáis simular.
 
-El `README_P4.md` explicará **cómo y cuándo** se hicieron los commits, cómo se ejecutó cada hito y cómo reconstruir un ciclo real con hashes y PR. Debéis crear un commit `TDD-TEST` después de observar el RED genuino, antes del código de producción; otro `TDD-FEAT` tras comprobar GREEN; y `TDD-REFACTOR` si hubo refactorización real, con regresión GREEN. Un `undefined/pending` de Cucumber es un estado ATDD inicial, no un RED unitario. No hay número fijo de commits ni hay que fabricar errores. Consultad [el laboratorio HU-01](04-laboratorio-hu01.md) y [la guía de auditoría](08-guia-auditoria-uml-video.md).
+El `README_P4.md` explicará **cómo y cuándo** se hicieron los commits, cómo se ejecutó cada hito y cómo reconstruir un ciclo real con hashes y PR. Debéis crear un commit `TDD-TEST` después de observar el RED genuino, antes del código de producción; otro `TDD-FEAT` tras comprobar GREEN; y `TDD-REFACTOR` si hubo refactorización real, con regresión GREEN. Un `undefined/pending` de Cucumber es un estado ATDD inicial, no un RED unitario. No hay número fijo de commits ni hay que fabricar errores. Consultad [el laboratorio HU-01](docs/04-laboratorio-hu01.md) y [la guía de auditoría](docs/08-guia-auditoria-uml-video.md).
 
 Conservad los estados reales de trabajo necesarios para la auditoría. Evitad combinar o reescribir los commits que vais a usar como evidencia. No hagáis un merge de una rama que todavía tiene pruebas deliberadamente rojas. Los PR finales deben quedar verificados.
 
