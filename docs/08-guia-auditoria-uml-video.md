@@ -4,7 +4,7 @@
 
 ## 1. Finalidad y alcance de la evidencia
 
-En parejas, el **alumno 1** mostrará un escenario significativo de **HU-02** (después de desarrollar HU-01/HU-02 hasta BDD-05d) y el **alumno 2** uno de **HU-03** (después del relevo GREEN; BDD-06–09, 10–12 y 13d). Los otros valores límite de equilibrio se comprueban mediante JUnit. Cada participante mostrará un **escenario intermedio de su etapa** que incluya un comportamiento de negocio significativo y una evolución de diseño. La evaluación principal del proceso se realiza mediante su **vídeo individual (máximo 6–7 min)**, contrastado con el historial real de Git y las ejecuciones. No basta una suite GREEN final. La entrega del grupo incluye todas las HU y una suite reproducible; cada persona demuestra su recorrido.
+La evaluación principal del proceso se realiza mediante su **vídeo individual (máximo 6–7 min)** para cada alumno, contrastado con el historial real de Git y las ejecuciones. No basta una suite GREEN final. La entrega del grupo incluye todas las HU y una suite reproducible; cada persona demuestra su recorrido. En dicho vídeo, cada alumno mostrará un escenario significativo de la historia de usuario desarrollada (**HU-02/HU-03**) distinto del primer escenario desarrollado de su historia de usuario. Los otros valores límite de equilibrio se comprueban mediante JUnit. Cada participante mostrará un **escenario intermedio de su etapa** que incluya un comportamiento de negocio significativo y una evolución de diseño.
 
 La técnica recomendada es **«historia de escenario con commits de hitos verificables»**: rama por incremento, mensajes en español con HU, BDD y fase, commits reales de pruebas y producción en los momentos en que se producen, y una tabla que enlaza hashes, resultados, PR, vídeo y cortes UML. Se puede elegir una técnica equivalente de auditoría sin cambiar la convención obligatoria de mensajes. No exigir una cantidad fija de commits ni convertir fallos de infraestructura en RED TDD.
 
@@ -31,26 +31,10 @@ ATDD-FEAT HU-03 BDD-13d: verificar el rechazo y la ausencia de persistencia
 
 No se deben crear commits artificiales ni modificar fechas/autorías, ni reconstruir retrospectivamente un falso recorrido. La escritura de archivos temporales o snapshots solo sirve para reconstruir el estado original; deben localizarse los hashes originales con `git log`. No rebase interactivo, squash, amend ni force-push en la parte del historial que se va a presentar como evidencia auditada, salvo incidencia documentada y referencias actualizadas.
 
-## 3. Cómo recuperar y auditar un ciclo de forma reproducible
 
-Desde la raíz del repositorio en Windows (PowerShell), con el proyecto Maven en `ProyectoP4/`:
+## 3. Matriz mínima de trazabilidad
 
-```powershell
-git status
-git branch --show-current
-git log --oneline --decorate --all -- ProyectoP4/
-git show --stat <HASH>
-git show <HASH> -- ProyectoP4/
-mvn -f ProyectoP4/pom.xml clean verify
-```
-
-Sustituir `<HASH>` por el hash real. En PowerShell los signos angulares son marcadores de documentación, **no deben escribirse literalmente**. Para comprobar un estado histórico sin alterar la rama activa, usar `git worktree add --detach ../p4-auditoria HASH_REAL`, ejecutar allí Maven, registrar el resultado y después `git worktree remove ../p4-auditoria`; si el commit RED no compila, es un resultado esperado de ese hito, no un fallo que deba repararse. Antes de crear un worktree comprobar que no haya cambios sin guardar y que la ruta sea segura. Alternativamente navegar por el diff de GitHub y enlazar la ejecución Actions del commit; el vídeo debe explicar el resultado reproducible, no simularlo.
-
-Los comandos `git show` permiten explicar **qué cambió y por qué**. `git diff HASH_ANTERIOR HASH_NUEVO -- P4/` contrasta etapas. Cada fila de la tabla del README llevará URL permanente de commit y el identificador de la ejecución. Si el workflow solo ejecuta `verify` al publicar, se admite adjuntar el resultado local del RED (reporte y captura legibles) vinculado al hash. Si un commit RED se publica, el CI podrá fallar legítimamente en la rama de trabajo; el PR final deberá quedar GREEN.
-
-## 4. Matriz mínima de trazabilidad
-
-Además de los microciclos, registrar el **commit de relevo HU-02 → HU-03**, su PR, revisión, resultado CI y UML HU-02; el vídeo del segundo alumno debe partir de ese estado. Para una entrega individual se conserva el mismo hito lógico.
+Además de los microciclos, registrar el **commit de inicio de HU-02**, el **commit de relevo HU-02 → HU-03** y UML HU-02; el vídeo del segundo alumno debe partir de ese estado. Para una entrega individual se conserva el mismo hito lógico.
 
 | Alumno | Escenario/regla | Cucumber inicial | JUnit RED y diagnóstico | GREEN mínimo | Refactorización/prueba OO | Aceptación final + regresión | PR/CI | Vídeo |
 |---|---|---|---|---|---|---|---|---|
@@ -58,7 +42,7 @@ Además de los microciclos, registrar el **commit de relevo HU-02 → HU-03**, s
 
 Una ejecución de Cucumber que aún tiene pasos undefined muestra el contrato no automatizado; el RED de JUnit es otra evidencia distinta. Identificar las pruebas de clase y de colaboración que se añadieron después.
 
-## 5. Diagramas UML progresivos: tres cortes, más los cambios del escenario auditado
+## 4. Diagramas UML progresivos: tres cortes, más los cambios del escenario auditado
 
 **Obligatorios tres diagramas UML de clases**, asociados a los hashes y estados reales del repositorio: tras HU-01, tras HU-02 y tras HU-03. Deben reflejar solo las clases efectivamente existentes en ese momento; la arquitectura conceptual futura, si se menciona, se distingue gráficamente como hipótesis y no se hace pasar por implementada.
 
@@ -86,7 +70,7 @@ classDiagram
 
 No se valorará el número de cajas, sino la **correspondencia con el código de cada commit, la corrección de las relaciones y la explicación de por qué evolucionó**.
 
-## 6. Vídeo individual: guion orientativo de 6–7 minutos
+## 5. Vídeo individual: guion orientativo de 6–7 minutos
 
 | Tramo aproximado | Qué se muestra y explica |
 |---|---|
@@ -101,7 +85,7 @@ Estos tiempos son orientativos; la evaluación prioriza una explicación técnic
 
 Grabación real de pantalla y voz **simultáneas** del alumno, con movimiento de ratón y textos legibles. Se admiten cortes entre secciones y transiciones, pero cada sección ha de ser una grabación continua de voz y acción, no voz en off grabada por separado. No se exige cámara. Alojamiento externo (p. ej. YouTube no listado); enlazar URL y marcas de tiempo en README y comprobar permisos.
 
-## 7. Evaluación final de calidad: qué debe analizarse
+## 6. Evaluación final de calidad: qué debe analizarse
 
 Una **tabla de evaluación final** en README incluirá valor, fuente (enlace/reporte y fecha o hash), interpretación, decisión y comprobación posterior para cada indicador disponible:
 
