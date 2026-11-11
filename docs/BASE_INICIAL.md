@@ -52,7 +52,6 @@ ProyectoP4/
 │       ├── domain/model/           Pruebas de P3 y de sesiones de Dojo
 │       └── infrastructure/persistence/
 │                                   InMemoryDojoRepositoryTest
-└── BASE_ALUMNADO.md
 ```
 
 Las capas `application` y el resto del dominio/infrastructure de P4 deben crearse únicamente cuando las pruebas lo requieran. No modificar los tests heredados solo para hacerlos pasar. El enunciado y contrato del cliente están en `docs/00-enunciado-alumnado.md`, `docs/01-contexto-backlog.md` y `docs/02-aceptacion.md`.
